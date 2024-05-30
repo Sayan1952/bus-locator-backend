@@ -6,10 +6,15 @@ app.use(cors());
 app.use(express.json());
 
 const busLocations = {
-  '1': { latitude: 37.78825, longitude: -122.4324 },
-  '2': { latitude: 37.78835, longitude: -122.4314 },
-  '3': { latitude: 37.78845, longitude: -122.4304 },
+  'Shurma': { latitude: 22.335351479700915, longitude: 91.82630854206182 },
+  'Padma': { latitude: 22.36462715520287, longitude: 91.82129755756611 },
+  'Matamuhuri': { latitude: 22.46905685317969, longitude: 91.97100285431742 },
 };
+
+// let busLocation = {
+//   latitude: 22.335351479700915,
+//   longitude: 91.82630854206182
+// };
 
 app.get('/location/:busId', (req, res) => {
   const busId = req.params.busId;
@@ -20,6 +25,11 @@ app.get('/location/:busId', (req, res) => {
   } else {
     res.status(404).send('Bus not found');
   }
+});
+
+
+app.get('/location', (req, res) => {
+  res.json(busLocations);
 });
 
 const PORT = process.env.PORT || 3000;
